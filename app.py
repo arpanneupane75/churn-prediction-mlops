@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.responses import Response
@@ -13,6 +14,7 @@ from prometheus_client import (
     CONTENT_TYPE_LATEST
 )
 
+
 # =====================================================
 # Load Artifacts
 # =====================================================
@@ -21,11 +23,13 @@ model = joblib.load("churn_model.pkl")
 scaler = joblib.load("scaler.pkl")
 feature_names = joblib.load("feature_names.pkl")
 
+
 # =====================================================
 # Production Data Logging
 # =====================================================
 
 LOG_FILE = "production_logs.csv"
+
 
 def log_prediction(df: pd.DataFrame):
 
@@ -41,6 +45,8 @@ def log_prediction(df: pd.DataFrame):
             LOG_FILE,
             index=False
         )
+
+
 # =====================================================
 # Prometheus Metrics
 # =====================================================
@@ -60,6 +66,7 @@ prediction_latency = Histogram(
     "Prediction latency"
 )
 
+
 # =====================================================
 # FastAPI
 # =====================================================
@@ -68,6 +75,7 @@ app = FastAPI(
     title="Customer Churn Prediction API",
     version="1.0"
 )
+
 
 # =====================================================
 # Input Schema
@@ -144,7 +152,9 @@ def predict(customer: Customer):
             "High_Payment_Risk": data["High_Payment_Risk"],
             "Low_Usage_Risk": data["Low_Usage_Risk"]
         }])
+
         log_prediction(df)
+
         df = df[feature_names]
 
         scaled = scaler.transform(df)
@@ -158,9 +168,7 @@ def predict(customer: Customer):
         )
 
         return {
-
             "prediction": int(prediction),
-
             "probability": round(
                 float(probability),
                 4
