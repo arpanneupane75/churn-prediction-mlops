@@ -1,5 +1,4 @@
 apiVersion: apps/v1
-
 kind: Deployment
 
 metadata:
@@ -24,12 +23,13 @@ spec:
 
       - name: churn-api
 
-        image: churn-api:latest
+        image: ghcr.io/arpanneupane75/churn-prediction-mlops:latest
 
-        imagePullPolicy: Never
+        imagePullPolicy: Always
 
         ports:
         - containerPort: 8000
+
 
         readinessProbe:
 
@@ -40,6 +40,7 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 10
 
+
         livenessProbe:
 
           httpGet:
@@ -48,13 +49,3 @@ spec:
 
           initialDelaySeconds: 10
           periodSeconds: 20
-
-        # resources:
-
-        #   requests:
-        #     memory: "256Mi"
-        #     cpu: "250m"
-
-        #   limits:
-        #     memory: "512Mi"
-        #     cpu: "500m"
