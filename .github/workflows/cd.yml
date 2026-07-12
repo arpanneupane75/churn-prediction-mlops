@@ -112,7 +112,7 @@ jobs:
 
 
 
-    # ---------------------------
+        # ---------------------------
     # Deploy
     # ---------------------------
 
@@ -125,6 +125,8 @@ jobs:
         kubectl apply -f k8s/api-deployment.yaml
 
         kubectl apply -f k8s/api-service.yaml
+
+        kubectl rollout restart deployment/churn-api
 
 
 
