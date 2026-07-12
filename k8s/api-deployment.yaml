@@ -5,47 +5,73 @@ metadata:
   name: churn-api
 
 spec:
-  replicas: 2
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
 
   selector:
     matchLabels:
       app: churn-api
 
   template:
-
     metadata:
       labels:
         app: churn-api
 
     spec:
-
       containers:
+        - name: churn-api
+          image: ghcr.io/arpanneupane75/churn-prediction-mlops:latest
+          imagePullPolicy: Always
 
-      - name: churn-api
+          ports:
+            - name: http
+              containerPort: 8000
 
-        image: ghcr.io/arpanneupane75/churn-prediction-mlops:latest
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 60
 
-        imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
 
-        ports:
-        - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
 
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "2Gi"
 
-        readinessProbe:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
 
-          httpGet:
-            path: /health
-            port: 8000
+      terminationGracePeriodSeconds: 30
 
-          initialDelaySeconds: 5
-          periodSeconds: 10
-
-
-        livenessProbe:
-
-          httpGet:
-            path: /health
-            port: 8000
-
-          initialDelaySeconds: 10
-          periodSeconds: 20
+      restartPolicy: Always
