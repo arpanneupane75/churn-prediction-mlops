@@ -6,7 +6,7 @@ on:
   workflow_run:
 
     workflows:
-      - Churn Prediction CI
+      - Churn Prediction CI/CD
 
     types:
       - completed
