@@ -177,6 +177,15 @@ The objective is to simulate how machine learning models are developed, deployed
 
 ![Docker Container](docs/screenshots/docker_container.png)
 ---
+---
+# Continuos Integration
+
+![CI](docs/screenshots/ci.png)
+---
+# Continuos Deployment
+
+![CI](docs/screenshots/cd.png)
+---
 # Repository Structure
 
 ```text
