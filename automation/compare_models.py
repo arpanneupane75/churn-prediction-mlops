@@ -1,109 +1,3 @@
-# import os
-# import joblib
-
-# from sklearn.metrics import (
-#     accuracy_score,
-#     precision_score,
-#     recall_score,
-#     f1_score,
-#     roc_auc_score
-# )
-
-
-# MODEL_PATH = "artifacts/churn_model.pkl"
-
-
-# def evaluate(model, X, y):
-
-#     pred = model.predict(X)
-#     prob = model.predict_proba(X)[:, 1]
-
-#     return {
-
-#         "Accuracy": accuracy_score(y, pred),
-
-#         "Precision": precision_score(y, pred),
-
-#         "Recall": recall_score(y, pred),
-
-#         "F1": f1_score(y, pred),
-
-#         "ROC_AUC": roc_auc_score(y, prob)
-
-#     }
-
-
-# def compare_models(
-#         new_model,
-#         X_test,
-#         y_test,
-#         new_model_name,
-#         new_f1
-# ):
-
-#     print("=" * 60)
-#     print("MODEL COMPARISON")
-#     print("=" * 60)
-
-#     # -----------------------------------------
-#     # First deployment
-#     # -----------------------------------------
-
-#     if not os.path.exists(MODEL_PATH):
-
-#         print("No production model found.")
-#         print("Deploying first model.")
-
-#         return True
-
-#     # -----------------------------------------
-#     # Load old model
-#     # -----------------------------------------
-
-#     old_model = joblib.load(MODEL_PATH)
-
-#     old_metrics = evaluate(
-#         old_model,
-#         X_test,
-#         y_test
-#     )
-
-#     new_metrics = evaluate(
-#         new_model,
-#         X_test,
-#         y_test
-#     )
-
-#     print("\nProduction Model")
-
-#     for k, v in old_metrics.items():
-#         print(f"{k:12}: {v:.4f}")
-
-#     print("\nRetrained Model")
-
-#     for k, v in new_metrics.items():
-#         print(f"{k:12}: {v:.4f}")
-
-#     print("\nDecision")
-
-#     improvement = new_metrics["F1"] - old_metrics["F1"]
-
-#     print(f"Old F1 : {old_metrics['F1']:.4f}")
-#     print(f"New F1 : {new_metrics['F1']:.4f}")
-#     print(f"Gain   : {improvement:.4f}")
-
-#     if improvement > 0.005:
-
-#         print("\nRetrained model is better.")
-#         print("Replacing production model.")
-
-#         return True
-
-#     print("\nImprovement is insignificant.")
-#     print("Keeping current production model.")
-
-#     return False
-
 import os
 import joblib
 
@@ -115,10 +9,13 @@ from sklearn.metrics import (
     roc_auc_score
 )
 
+# =====================================================
+# Configuration
+# =====================================================
 
 MODEL_PATH = "artifacts/churn_model.pkl"
 
-# Minimum improvement required before replacing production model
+# Minimum F1 improvement required to replace production model
 MIN_F1_IMPROVEMENT = 0.005
 
 
@@ -128,20 +25,20 @@ MIN_F1_IMPROVEMENT = 0.005
 
 def evaluate(model, X, y):
 
-    pred = model.predict(X)
-    prob = model.predict_proba(X)[:, 1]
+    predictions = model.predict(X)
+    probabilities = model.predict_proba(X)[:, 1]
 
     return {
 
-        "Accuracy": accuracy_score(y, pred),
+        "Accuracy": accuracy_score(y, predictions),
 
-        "Precision": precision_score(y, pred),
+        "Precision": precision_score(y, predictions),
 
-        "Recall": recall_score(y, pred),
+        "Recall": recall_score(y, predictions),
 
-        "F1": f1_score(y, pred),
+        "F1": f1_score(y, predictions),
 
-        "ROC_AUC": roc_auc_score(y, prob)
+        "ROC_AUC": roc_auc_score(y, probabilities)
 
     }
 
@@ -151,11 +48,9 @@ def evaluate(model, X, y):
 # =====================================================
 
 def compare_models(
-        new_model,
-        X_test,
-        y_test,
-        new_model_name,
-        new_f1
+    new_model,
+    X_test,
+    y_test
 ):
 
     print("=" * 60)
@@ -163,26 +58,33 @@ def compare_models(
     print("=" * 60)
 
     # -------------------------------------------------
+    # Evaluate Retrained Model
+    # -------------------------------------------------
+
+    new_metrics = evaluate(
+        new_model,
+        X_test,
+        y_test
+    )
+
+    # -------------------------------------------------
     # First Deployment
     # -------------------------------------------------
 
     if not os.path.exists(MODEL_PATH):
 
-        print("No production model found.")
+        print("\nNo production model found.")
         print("Deploying first model.")
 
         return {
 
             "deploy": True,
+
             "reason": "First deployment",
 
             "old_metrics": None,
 
-            "new_metrics": evaluate(
-                new_model,
-                X_test,
-                y_test
-            )
+            "new_metrics": new_metrics
 
         }
 
@@ -198,21 +100,23 @@ def compare_models(
         y_test
     )
 
-    new_metrics = evaluate(
-        new_model,
-        X_test,
-        y_test
-    )
+    # -------------------------------------------------
+    # Display Metrics
+    # -------------------------------------------------
 
     print("\nProduction Model")
 
-    for k, v in old_metrics.items():
-        print(f"{k:12}: {v:.4f}")
+    for metric, value in old_metrics.items():
+        print(f"{metric:12}: {value:.4f}")
 
     print("\nRetrained Model")
 
-    for k, v in new_metrics.items():
-        print(f"{k:12}: {v:.4f}")
+    for metric, value in new_metrics.items():
+        print(f"{metric:12}: {value:.4f}")
+
+    # -------------------------------------------------
+    # Compare Performance
+    # -------------------------------------------------
 
     improvement = new_metrics["F1"] - old_metrics["F1"]
 
@@ -220,6 +124,10 @@ def compare_models(
     print(f"Old F1 : {old_metrics['F1']:.4f}")
     print(f"New F1 : {new_metrics['F1']:.4f}")
     print(f"Gain   : {improvement:.4f}")
+
+    # -------------------------------------------------
+    # Deploy If Better
+    # -------------------------------------------------
 
     if improvement >= MIN_F1_IMPROVEMENT:
 
@@ -237,6 +145,10 @@ def compare_models(
             "new_metrics": new_metrics
 
         }
+
+    # -------------------------------------------------
+    # Keep Existing Production Model
+    # -------------------------------------------------
 
     print("\nImprovement is insignificant.")
     print("Keeping current production model.")

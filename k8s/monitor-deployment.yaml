@@ -17,12 +17,14 @@ spec:
         app: drift-monitor
 
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: drift-monitor
 
-          image: churn-monitor:latest
+          image: ghcr.io/arpanneupane75/churn-monitor:latest
 
-          imagePullPolicy: Never
+          imagePullPolicy: Always
 
           ports:
             - containerPort: 8001

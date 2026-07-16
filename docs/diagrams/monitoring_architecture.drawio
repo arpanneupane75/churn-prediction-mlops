@@ -1,0 +1,33 @@
+                 Prediction API
+
+                        │
+
+          /metrics endpoint exposed
+
+                        │
+
+                        ▼
+
+                  Prometheus
+
+                        │
+
+          ┌─────────────┴────────────┐
+
+          ▼                          ▼
+
+Prediction Metrics          Drift Metrics
+
+          │                          │
+
+          └─────────────┬────────────┘
+
+                        ▼
+
+                    Grafana
+
+                        │
+
+                        ▼
+
+                  Dashboards

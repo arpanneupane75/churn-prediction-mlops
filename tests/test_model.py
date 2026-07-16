@@ -6,17 +6,17 @@ def test_model_files():
 
 
     model=joblib.load(
-        "churn_model.pkl"
+        "artifacts/churn_model.pkl"
     )
 
 
     scaler=joblib.load(
-        "scaler.pkl"
+        "artifacts/scaler.pkl"
     )
 
 
     features=joblib.load(
-        "feature_names.pkl"
+        "artifacts/feature_names.pkl"
     )
 
 

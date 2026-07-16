@@ -1,145 +1,212 @@
+# name: Churn Prediction CD
+
+
+# on:
+
+#   workflow_run:
+
+#     workflows:
+#       - Churn Prediction CI/CD
+
+#     types:
+#       - completed
+
+#     branches:
+#       - main
+
+
+
+# permissions:
+
+#   contents: read
+
+#   packages: write
+
+
+
+# jobs:
+
+
+#   deploy:
+
+
+#     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+#     runs-on: ubuntu-latest
+
+
+#     steps:
+
+
+#     - name: Checkout repository
+
+#       uses: actions/checkout@v4
+
+
+
+#     # ---------------------------
+#     # Login GHCR
+#     # ---------------------------
+
+#     - name: Login to GHCR
+
+#       uses: docker/login-action@v3
+
+#       with:
+
+#         registry: ghcr.io
+
+#         username: ${{ github.actor }}
+
+#         password: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+#     # ---------------------------
+#     # Build Image
+#     # ---------------------------
+
+#     - name: Build Docker Image
+
+#       run: |
+
+#         docker build \
+#         -t ghcr.io/${{ github.repository }}:latest .
+
+
+
+#     # ---------------------------
+#     # Push Image
+#     # ---------------------------
+
+#     - name: Push Docker Image
+
+#       run: |
+
+#         docker push \
+#         ghcr.io/${{ github.repository }}:latest
+
+
+
+#     # ---------------------------
+#     # Kubernetes Setup
+#     # ---------------------------
+
+#     - name: Setup kubectl
+
+#       uses: azure/setup-kubectl@v4
+
+
+
+#     # ---------------------------
+#     # Kubernetes Login
+#     # ---------------------------
+
+#     - name: Configure Kubernetes
+
+#       run: |
+
+#         echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
+
+#         export KUBECONFIG=kubeconfig
+
+
+
+#         # ---------------------------
+#     # Deploy
+#     # ---------------------------
+
+#     - name: Deploy to Kubernetes
+
+#       run: |
+
+#         export KUBECONFIG=kubeconfig
+
+#         kubectl apply -f k8s/api-deployment.yaml
+
+#         kubectl apply -f k8s/api-service.yaml
+
+#         kubectl rollout restart deployment/churn-api
+
+
+
+#     # ---------------------------
+#     # Rolling Update Check
+#     # ---------------------------
+
+#     - name: Verify Rollout
+
+#       run: |
+
+#         export KUBECONFIG=kubeconfig
+
+#         kubectl rollout status \
+#         deployment/churn-api \
+#         --timeout=120s
+
 name: Churn Prediction CD
 
-
 on:
-
   workflow_run:
-
     workflows:
       - Churn Prediction CI/CD
-
     types:
       - completed
-
     branches:
       - main
 
-
-
 permissions:
-
   contents: read
-
   packages: write
-
-
 
 jobs:
 
-
   deploy:
-
 
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     runs-on: ubuntu-latest
 
-
     steps:
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Checkout repository
+      # ---------------------------
+      # Login GHCR
+      # ---------------------------
 
-      uses: actions/checkout@v4
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
+      # ---------------------------
+      # Build Image
+      # ---------------------------
 
+      - name: Build Docker Image
+        run: |
+          docker build \
+          -t ghcr.io/${{ github.repository }}:latest .
 
-    # ---------------------------
-    # Login GHCR
-    # ---------------------------
+      # ---------------------------
+      # Push Image
+      # ---------------------------
 
-    - name: Login to GHCR
+      - name: Push Docker Image
+        run: |
+          docker push \
+          ghcr.io/${{ github.repository }}:latest
 
-      uses: docker/login-action@v3
+      # ---------------------------
+      # Deployment Placeholder
+      # ---------------------------
 
-      with:
-
-        registry: ghcr.io
-
-        username: ${{ github.actor }}
-
-        password: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-    # ---------------------------
-    # Build Image
-    # ---------------------------
-
-    - name: Build Docker Image
-
-      run: |
-
-        docker build \
-        -t ghcr.io/${{ github.repository }}:latest .
-
-
-
-    # ---------------------------
-    # Push Image
-    # ---------------------------
-
-    - name: Push Docker Image
-
-      run: |
-
-        docker push \
-        ghcr.io/${{ github.repository }}:latest
-
-
-
-    # ---------------------------
-    # Kubernetes Setup
-    # ---------------------------
-
-    - name: Setup kubectl
-
-      uses: azure/setup-kubectl@v4
-
-
-
-    # ---------------------------
-    # Kubernetes Login
-    # ---------------------------
-
-    - name: Configure Kubernetes
-
-      run: |
-
-        echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
-
-        export KUBECONFIG=kubeconfig
-
-
-
-        # ---------------------------
-    # Deploy
-    # ---------------------------
-
-    - name: Deploy to Kubernetes
-
-      run: |
-
-        export KUBECONFIG=kubeconfig
-
-        kubectl apply -f k8s/api-deployment.yaml
-
-        kubectl apply -f k8s/api-service.yaml
-
-        kubectl rollout restart deployment/churn-api
-
-
-
-    # ---------------------------
-    # Rolling Update Check
-    # ---------------------------
-
-    - name: Verify Rollout
-
-      run: |
-
-        export KUBECONFIG=kubeconfig
-
-        kubectl rollout status \
-        deployment/churn-api \
-        --timeout=120s
+      - name: Deployment Status
+        run: |
+          echo "Docker image pushed successfully."
+          echo "Local Kubernetes deployment is performed manually."
+          echo "AKS deployment will be added later."

@@ -23,7 +23,7 @@ app = FastAPI(
 # Load Baseline
 # =====================================================
 
-with open("baseline.json", "r") as f:
+with open("artifacts/baseline.json", "r") as f:
     baseline = json.load(f)
 
 # =====================================================
@@ -51,7 +51,7 @@ for feature in baseline.keys():
 def calculate_drift():
 
     try:
-        production = pd.read_csv("production_logs.csv")
+        production = pd.read_csv("artifacts/production_logs.csv")
 
     except FileNotFoundError:
         return {

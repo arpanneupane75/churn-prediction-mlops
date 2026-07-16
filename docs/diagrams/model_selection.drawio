@@ -1,0 +1,31 @@
+                   Best Retrained Model
+
+                             │
+
+                             ▼
+
+               Compare with Production Model
+
+                             │
+
+                 ┌───────────┴────────────┐
+
+                 │                        │
+
+          F1 Improved?              No Improvement
+
+                 │                        │
+
+              YES                       NO
+
+                 │                        │
+
+                 ▼                        ▼
+
+      Replace Production          Keep Existing Model
+
+                 │
+
+                 ▼
+
+      Save Updated Artifacts

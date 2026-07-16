@@ -1,51 +1,124 @@
-# Virtual environments
+# =========================
+# Python Virtual Environments
+# =========================
+
 .venv/
 venv/
 env/
 
-# Python cache
+
+# =========================
+# Python Cache
+# =========================
+
 __pycache__/
 *.py[cod]
 *.pyo
 
 
+# =========================
+# Dataset Files
+# =========================
 
-# Datasets
 data/
 datasets/
+*.csv
 
-# MLflow
+
+# =========================
+# Jupyter / Experiments
+# =========================
+
+*.ipynb
+.ipynb_checkpoints/
+
+
+# =========================
+# MLflow Tracking
+# =========================
+
 mlruns/
 
+
+# =========================
 # Logs
+# =========================
+
 logs/
 *.log
 
+
+# =========================
+# Documentation
+# =========================
+
+docs/
+*.md
+
+
+# =========================
 # Git
+# =========================
+
 .git/
 .gitignore
 
-# IDE files
+
+# =========================
+# IDE Files
+# =========================
+
 .vscode/
 .idea/
 
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb
 
-# Environment files
+# =========================
+# Environment Secrets
+# =========================
+
 .env
 .env.*
 
-# Build artifacts
+
+# =========================
+# Build / Packaging
+# =========================
+
 build/
 dist/
 *.egg-info/
 
-# Test cache
+
+# =========================
+# Testing
+# =========================
+
 .pytest_cache/
 .mypy_cache/
 
-# Operating system files
+
+# =========================
+# Operating System
+# =========================
+
 .DS_Store
 Thumbs.db
+
+
+# =========================
+# Local Development Files
+# =========================
+
+tests/
+notebooks/
+reports/
+
+
+# =========================
+# Temporary Files
+# =========================
+
+*.tmp
+*.temp
+# Docker exported images
+*.tar

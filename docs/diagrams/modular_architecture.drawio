@@ -1,0 +1,35 @@
+                   Customer Churn Prediction MLOps
+
+                           Project Root
+
+                                 │
+
+ ┌────────────┬─────────────┬────────────┬───────────────┐
+ │            │             │            │               │
+ ▼            ▼             ▼            ▼               ▼
+
+Training     API       Monitoring    Automation     Kubernetes
+
+ │            │             │            │               │
+
+ ▼            ▼             ▼            ▼               ▼
+
+Feature     FastAPI      Drift        Retraining     Deployments
+Engineering             Detection      Pipeline
+
+ │
+ ▼
+
+Preprocessing
+
+ │
+
+ ▼
+
+Training
+
+ │
+
+ ▼
+
+Artifacts

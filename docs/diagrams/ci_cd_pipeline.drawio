@@ -1,0 +1,39 @@
+        Developer
+
+            │
+
+            ▼
+
+      Git Commit
+
+            │
+
+            ▼
+
+      GitHub Repo
+
+            │
+
+            ▼
+
+     GitHub Actions
+
+            │
+
+     ┌──────┴──────┐
+
+     ▼             ▼
+
+  CI Workflow   CD Workflow
+
+     │             │
+
+     ▼             ▼
+
+Tests Pass    Build Docker
+
+                  │
+
+                  ▼
+
+      Future Kubernetes Deployment

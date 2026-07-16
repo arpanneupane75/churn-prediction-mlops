@@ -1,0 +1,54 @@
+             Raw Dataset
+
+                  │
+
+                  ▼
+
+           Feature Engineering
+
+                  │
+
+                  ▼
+
+             Preprocessing
+
+                  │
+
+                  ▼
+
+         Train/Test Split
+
+                  │
+
+                  ▼
+
+        ┌──────────────────────────┐
+        │ Logistic Regression      │
+        │ Random Forest            │
+        │ Gradient Boosting        │
+        │ XGBoost                  │
+        └──────────────────────────┘
+
+                  │
+
+                  ▼
+
+          Model Evaluation
+
+ Accuracy
+ Precision
+ Recall
+ F1
+ ROC-AUC
+
+                  │
+
+                  ▼
+
+          Select Best Model
+
+                  │
+
+                  ▼
+
+           Save Artifacts

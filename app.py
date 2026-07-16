@@ -19,16 +19,16 @@ from prometheus_client import (
 # Load Artifacts
 # =====================================================
 
-model = joblib.load("churn_model.pkl")
-scaler = joblib.load("scaler.pkl")
-feature_names = joblib.load("feature_names.pkl")
+model = joblib.load("artifacts/churn_model.pkl")
+scaler = joblib.load("artifacts/scaler.pkl")
+feature_names = joblib.load("artifacts/feature_names.pkl")
 
 
 # =====================================================
 # Production Data Logging
 # =====================================================
 
-LOG_FILE = "production_logs.csv"
+LOG_FILE = "artifacts/production_logs.csv"
 
 
 def log_prediction(df: pd.DataFrame):
@@ -45,7 +45,7 @@ def log_prediction(df: pd.DataFrame):
             LOG_FILE,
             index=False
         )
-
+    
 
 # =====================================================
 # Prometheus Metrics
@@ -154,6 +154,8 @@ def predict(customer: Customer):
         }])
 
         log_prediction(df)
+        print("Prediction logged successfully")
+        print(pd.read_csv(LOG_FILE).tail())
 
         df = df[feature_names]
 

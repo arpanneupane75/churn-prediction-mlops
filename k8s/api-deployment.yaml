@@ -23,9 +23,11 @@ spec:
         app: churn-api
 
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: churn-api
-          image: ghcr.io/arpanneupane75/churn-prediction-mlops:latest
+          image: ghcr.io/arpanneupane75/churn-api:latest
           imagePullPolicy: Always
 
           ports:

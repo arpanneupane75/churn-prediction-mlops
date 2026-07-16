@@ -1,0 +1,45 @@
+             Client
+
+               │
+
+HTTP POST /predict
+
+               │
+
+               ▼
+
+          FastAPI
+
+               │
+
+Load Model & Scaler
+
+               │
+
+               ▼
+
+ Feature Engineering
+
+               │
+
+               ▼
+
+ Standardization
+
+               │
+
+               ▼
+
+ Model Prediction
+
+               │
+
+               ▼
+
+ JSON Response
+
+               │
+
+               ▼
+
+ Prometheus Metrics Updated

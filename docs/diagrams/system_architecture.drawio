@@ -1,0 +1,60 @@
+                                    Customer
+
+                                       │
+                                       │
+                              HTTP Prediction Request
+                                       │
+                                       ▼
+
+                    +-----------------------------------+
+                    |           FastAPI API             |
+                    |                                   |
+                    | /predict                          |
+                    | /health                           |
+                    | /metrics                          |
+                    +----------------+------------------+
+                                     │
+              ┌──────────────────────┼────────────────────────┐
+              │                      │                        │
+              ▼                      ▼                        ▼
+
+      Prediction Model         Prometheus Metrics      Model Artifacts
+                                                  (loaded during startup)
+
+                                             +----------------------+
+                                             |      artifacts/      |
+                                             |----------------------|
+                                             | churn_model.pkl      |
+                                             | scaler.pkl           |
+                                             | feature_names.pkl    |
+                                             | baseline.json        |
+                                             | metadata.json        |
+                                             +----------------------+
+
+              │
+              │
+              ▼
+
+     +----------------------+
+     | Drift Monitor        |
+     |----------------------|
+     | Feature Drift        |
+     | Baseline Comparison  |
+     +----------+-----------+
+                │
+                │
+                ▼
+
+        +---------------+
+        | Prometheus    |
+        |---------------|
+        | Time Series   |
+        +-------+-------+
+                │
+                ▼
+
+         +--------------+
+         | Grafana      |
+         |--------------|
+         | Dashboards   |
+         +--------------+
