@@ -1,4 +1,3 @@
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.responses import Response
@@ -45,7 +44,7 @@ def log_prediction(df: pd.DataFrame):
             LOG_FILE,
             index=False
         )
-    
+
 
 # =====================================================
 # Prometheus Metrics
