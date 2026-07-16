@@ -1,1 +1,35 @@
-name: Churn Prediction CDon:  workflow_run:    workflows:      - Churn Prediction CI/CD    types:      - completed    branches:      - mainpermissions:  contents: readjobs:  deploy:    if: ${{ github.event.workflow_run.conclusion == 'success' }}    runs-on: ubuntu-latest    steps:      # ---------------------------      # Checkout Repository      # ---------------------------      - name: Checkout repository        uses: actions/checkout@v4      # ---------------------------      # Deployment Placeholder      # ---------------------------      - name: Deployment Status        run: |          echo "CI pipeline completed successfully."          echo "Docker image available at:"          echo "ghcr.io/${{ github.repository }}:latest"          echo ""          echo "Next step:"          echo "Deploy image to Kubernetes / AKS."
+name: Churn Prediction CD
+
+on:
+  workflow_run:
+    workflows:
+      - Churn Prediction CI/CD
+    types:
+      - completed
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+
+  deploy:
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deployment Status
+        run: |
+          echo "CI pipeline completed successfully."
+          echo "Docker image available at:"
+          echo "ghcr.io/${{ github.repository }}:latest"
+          echo ""
+          echo "Next step:"
+          echo "Deploy image to Kubernetes / AKS."
