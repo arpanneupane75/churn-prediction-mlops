@@ -108,70 +108,75 @@ The objective is to simulate how machine learning models are developed, deployed
 
 ## API Demo
 
-> **Placeholder**
+### Health Endpoint
 
-```
-docs/demo/api_demo.gif
-```
+![Health API](docs/screenshots/health_api.png)
 
 ---
 
-## Kubernetes Deployment
+### API Call
 
-> **Placeholder**
+![API Call](docs/screenshots/api_call.png)
 
-```
-docs/demo/kubernetes_demo.gif
-```
+### Prediction Request
+
+![Prediction Result](docs/screenshots/prediction_result.png)
+
+---
+## 📊 Monitoring
+
+### Prometheus Metrics
+
+![Metrics](docs/screenshots/metrics.png)
 
 ---
 
-## Grafana Dashboard
+### Additional Metrics
 
-> **Placeholder**
-
-```
-docs/screenshots/grafana_dashboard.png
-```
+![Metrics 2](docs/screenshots/metrics2.png)
 
 ---
 
-## Prometheus Metrics
+### Prometheus Target
 
-> **Placeholder**
+![Prometheus Target](docs/screenshots/prometheus_target.png)
 
-```
-docs/screenshots/prometheus_metrics.png
-```
+---
+## 📈 Grafana Dashboard
+
+### Dashboard Overview
+
+![Grafana Dashboard](docs/screenshots/grafana_dashboard.png)
 
 ---
 
-## Drift Monitoring
+### Prediction Metrics
 
-> **Placeholder**
-
-```
-docs/screenshots/drift_dashboard.png
-```
+![Grafana Dashboard 2](docs/screenshots/grafana_dashboard2.png)
 
 ---
+
+### Drift Monitoring
+
+![Grafana Dashboard 3](docs/screenshots/grafana_dashboard3.png)
+
 
 # System Architecture
 
-Insert the exported image from:
+![System Architecture](docs/diagrams/system_architecture1.png)
+![System Architecture](docs/diagrams/system_architecture2.png)
 
-```
-docs/diagrams/system_architecture.drawio
-```
-
-Example:
-
-```markdown
-![System Architecture](docs/diagrams/system_architecture.png)
-```
 
 ---
+# Kubernetes Services
+![kubernetes Deployment](docs/screenshots/kubernetes1.png)
+![kubernetes Deployment](docs/screenshots/kubernetes2.png)
+![kubernetes Deployment](docs/screenshots/kubernetes3.png)
+---
+# Docker Services
 
+![Docker Container](docs/screenshots/docker_container.png)
+---
 # Repository Structure
 
 ```text
@@ -211,48 +216,48 @@ Customer_Churn_MLOps/
 ---
 
 # Project Documentation
+## 📚 Core Documentation
 
-## Core Documentation
-
-| Document             | Description                         |
-| -------------------- | ----------------------------------- |
-| architecture.md      | Overall software architecture       |
-| infrastructure.md    | Deployment infrastructure           |
-| project_structure.md | Repository explanation              |
-| api.md               | REST API reference                  |
-| monitoring.md        | Monitoring architecture             |
-| ci_cd.md             | Continuous Integration & Deployment |
-| retraining.md        | Automated retraining workflow       |
-
----
-
-## Architecture Decision Records (ADR)
-
-| ADR     | Description                   |
-| ------- | ----------------------------- |
-| ADR-001 | Modular Architecture          |
-| ADR-002 | Model Selection Strategy      |
-| ADR-003 | Docker Containerization       |
-| ADR-004 | Kubernetes Deployment         |
-| ADR-005 | Monitoring Stack              |
-| ADR-006 | Automated Retraining Pipeline |
+| Document | Description |
+|----------|-------------|
+| [**architecture.md**](docs/architecture.md) | Overall software architecture |
+| [**infrastructure.md**](docs/infrastructure.md) | Deployment infrastructure |
+| [**project_structure.md**](docs/project_structure.md) | Repository explanation |
+| [**api.md**](docs/api.md) | REST API reference |
+| [**monitoring.md**](docs/monitoring.md) | Monitoring architecture |
+| [**deployment.md**](docs/deployment.md) | CI/CD pipeline and deployment process |
+| [**retraining_pipeline.md**](docs/retraining_pipeline.md) | Automated retraining workflow |
 
 ---
 
-## Draw.io Diagrams
+## 📋 Architecture Decision Records (ADR)
 
-| Diagram                 |
-| ----------------------- |
-| System Architecture     |
-| Modular Architecture    |
-| Training Pipeline       |
-| Model Selection         |
-| Docker Architecture     |
-| Kubernetes Architecture |
-| Monitoring Architecture |
-| Retraining Pipeline     |
-| CI/CD Pipeline          |
-| API Request Flow        |
+| ADR | Description |
+|-----|-------------|
+| ADR-001 | [Modular Architecture](docs/adr/ADR-001-architecture.md) |
+| ADR-002 | [Model Selection Strategy](docs/adr/ADR-002-model-selection.md) |
+| ADR-003 | [Docker Containerization](docs/adr/ADR-003-containerization.md) |
+| ADR-004 | [Kubernetes Deployment](docs/adr/ADR-004-kubernetes.md) |
+| ADR-005 | [Monitoring Stack](docs/adr/ADR-005-monitoring.md) |
+| ADR-006 | [Automated Retraining Pipeline](docs/adr/ADR-006-retraining.md) |
+
+---
+
+## 📐 Draw.io Diagrams
+
+| Diagram | Preview |
+|---------|---------|
+| **System Architecture** | [🖼️ View](docs/diagrams/system_architecture1.png) |
+| **System Architecture(continued)** | [🖼️ View](docs/diagrams/system_architecture2.png) |
+| **Modular Architecture** | [🖼️ View](docs/diagrams/modular_architecture.png) |
+| **Training Pipeline** | [🖼️ View](docs/diagrams/training_pipeline.png) |
+| **Model Selection** | [🖼️ View](docs/diagrams/model_selection.png) |
+| **Docker Architecture** | [🖼️ View](docs/diagrams/docker_architecture.png) |
+| **Kubernetes Architecture** | [🖼️ View](docs/diagrams/kubernetes_architecture.png) |
+| **Monitoring Architecture** | [🖼️ View](docs/diagrams/monitoring_architecture.png) |
+| **Retraining Pipeline** | [🖼️ View](docs/diagrams/retraining_pipeline.png) |
+| **CI/CD Pipeline** | [🖼️ View](docs/diagrams/ci_cd_pipeline.png) |
+| **API Request Flow** | [🖼️ View](docs/diagrams/api_request_flow.png) |
 
 ---
 
@@ -349,16 +354,28 @@ Churn
 
 ---
 
-# Model Performance
+## Model Performance
 
-| Model               | Accuracy    | Precision   | Recall      | F1 Score    | ROC-AUC     |
-| ------------------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| Logistic Regression | Placeholder | Placeholder | Placeholder | Placeholder | Placeholder |
-| Random Forest       | Placeholder | Placeholder | Placeholder | Placeholder | Placeholder |
-| Gradient Boosting   | Placeholder | Placeholder | Placeholder | Placeholder | Placeholder |
-| XGBoost             | Placeholder | Placeholder | Placeholder | Placeholder | Placeholder |
+| Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC |
+|---------------------|:--------:|:---------:|:------:|:--------:|:-------:|
+| Logistic Regression | **0.8426** | **0.8720** | **0.8397** | **0.8556** | **0.9059** |
+| Random Forest ⭐ | **0.9305** | **0.8989** | **0.9858** | **0.9403** | **0.9492** |
+| Gradient Boosting | **0.9217** | **0.8980** | **0.9690** | **0.9322** | **0.9471** |
+| XGBoost | **0.9293** | **0.8990** | **0.9831** | **0.9392** | **0.9500** |
 
-> These values can be updated after the latest training run.
+### Production Model Selection
+
+The retraining pipeline evaluates multiple machine learning models and compares the best retrained model against the currently deployed production model using **F1 Score** as the deployment criterion.
+
+| Item | Value |
+|------|------:|
+| Best Retrained Model | **Random Forest** |
+| Best F1 Score | **0.9403** |
+| Current Production F1 | **0.9403** |
+| F1 Improvement | **0.0000** |
+| Deployment Decision | **Current Production Model Retained** |
+
+> Since the retrained model did not achieve a significant improvement over the production model (F1 gain = **0.0000**), the deployment pipeline retained the existing production model instead of replacing it. This prevents unnecessary model updates while ensuring deployment stability.
 
 ---
 
@@ -666,76 +683,153 @@ grafana             1/1
 ```bash
 kubectl get svc
 ```
-
 ---
+## Kubernetes Deployment
 
-## Kubernetes Dashboard Screenshot
+The application is deployed on **Kubernetes** using separate deployments and services for:
 
-> Placeholder
+- Churn Prediction API
+- Drift Monitor
+- Prometheus
+- Grafana
 
-```text
-docs/screenshots/kubernetes_pods.png
-```
+### Kubernetes Resources
+
+| Deployments | Services | Pods |
+|--------------|----------|------|
+| Churn API | ClusterIP | Running |
+| Drift Monitor | ClusterIP | Running |
+| Prometheus | ClusterIP | Running |
+| Grafana | ClusterIP | Running |
+
+### Deployment Screenshots
+
+| Kubernetes Dashboard | Services | Running Pods |
+|----------------------|----------|--------------|
+| ![](docs/screenshots/kubernetes1.png) | ![](docs/screenshots/kubernetes2.png) | ![](docs/screenshots/kubernetes3.png) |
 
 ---
 
 # Monitoring
 
-The project uses Prometheus for metric collection and Grafana for visualization.
-
----
+The project includes a complete monitoring stack built with **Prometheus** and **Grafana** for production observability.
 
 ## Prometheus
 
-Available metrics include
+Prometheus scrapes metrics from both:
 
-* prediction_requests_total
-* prediction_errors_total
-* prediction_latency_seconds
-* drift_age
-* drift_total_spend
-* drift_usage_frequency
-* drift_support_calls
-* drift_payment_delay
+- Churn Prediction API
+- Drift Monitoring Service
 
-Prometheus URL
+### Available Metrics
+
+#### Prediction Metrics
+
+- `prediction_requests_total`
+- `prediction_errors_total`
+- `prediction_latency_seconds`
+
+#### Data Drift Metrics
+
+- `overall_data_drift`
+- `drift_age`
+- `drift_tenure`
+- `drift_usage_frequency`
+- `drift_support_calls`
+- `drift_payment_delay`
+- `drift_total_spend`
+- `drift_last_interaction`
+- `drift_subscription_type_num`
+- `drift_contract_length_num`
+- `drift_avg_spend_per_month`
+- `drift_support_calls_per_month`
+- `drift_payment_reliability`
+- `drift_engagement_score`
+- `drift_high_support_risk`
+- `drift_high_payment_risk`
+- `drift_low_usage_risk`
+
+### Access Prometheus
 
 ```text
 http://localhost:9090
 ```
 
-Screenshot Placeholder
+### Prometheus Targets
 
-```text
-docs/screenshots/prometheus_dashboard.png
-```
+![Prometheus Targets](docs/screenshots/prometheus_target.png)
 
 ---
 
-## Grafana
+# Grafana Dashboard
 
-Grafana dashboards visualize
+Grafana visualizes both inference metrics and data drift metrics collected by Prometheus.
 
-* Prediction traffic
-* API latency
-* Error rate
-* Feature drift
-* Request volume
-* System health
+### Dashboard Panels
 
-Default URL
+- Total Prediction Requests
+- Prediction Latency
+- Prediction Error Rate
+- Overall Data Drift
+- Feature Drift Monitoring
+- API Health
+- Request Throughput
+
+### Access Grafana
 
 ```text
 http://localhost:3000
 ```
 
-Screenshot Placeholder
+---
 
-```text
-docs/screenshots/grafana_dashboard.png
-```
+### Dashboard Overview
+
+![Grafana Dashboard](docs/screenshots/grafana_dashboard.png)
 
 ---
+
+### Prediction Monitoring
+
+Displays API traffic, request count, latency and error metrics.
+
+![Prediction Metrics](docs/screenshots/grafana_dashboard2.png)
+
+---
+
+### Data Drift Monitoring
+
+Visualizes overall dataset drift together with feature-level drift scores for all monitored features.
+
+![Feature Drift Dashboard](docs/screenshots/grafana_dashboard3.png)
+
+---
+
+## Monitoring Architecture
+
+```
+FastAPI API
+      │
+      │ exposes /metrics
+      ▼
+ Prometheus
+      │
+      ▼
+ Grafana Dashboards
+```
+
+The monitoring pipeline provides real-time visibility into:
+
+- Model inference traffic
+- API latency
+- Prediction failures
+- Overall data drift
+- Feature-level drift
+- System health
+- Production monitoring
+
+---
+
 
 # REST API
 
@@ -802,24 +896,23 @@ Used by
 * Drift Monitoring
 
 ---
-
-# Documentation
+# 📚 Documentation
 
 For detailed explanations of each component, refer to the documentation below.
 
-| Document            | Link                      |
-| ------------------- | ------------------------- |
-| Architecture        | docs/architecture.md      |
-| Infrastructure      | docs/infrastructure.md    |
-| Project Structure   | docs/project_structure.md |
-| Monitoring          | docs/monitoring.md        |
-| REST API            | docs/api.md               |
-| Retraining Pipeline | docs/retraining.md        |
-| CI/CD               | docs/ci_cd.md             |
-| ADR                 | docs/adr/                 |
-| Draw.io Diagrams    | docs/diagrams/            |
+| Document | Link |
+|----------|------|
+| Architecture | [architecture.md](docs/architecture.md) |
+| Infrastructure | [infrastructure.md](docs/infrastructure.md) |
+| Project Structure | [project_structure.md](docs/project_structure.md) |
+| Monitoring | [monitoring.md](docs/monitoring.md) |
+| REST API | [api.md](docs/api.md) |
+| Deployment | [deployment.md](docs/deployment.md) |
+| Retraining Pipeline | [retraining_pipeline.md](docs/retraining_pipeline.md) |
+| Architecture Decision Records (ADR) | [docs/adr/](docs/adr/) |
+| Draw.io Diagrams | [docs/diagrams/](docs/diagrams/) |
+| Screenshots | [docs/screenshots/](docs/screenshots/) |
 
----
 
 # Automated Retraining Pipeline
 
@@ -846,19 +939,11 @@ Rather than replacing the deployed model after every training run, the pipeline 
 9. Otherwise, retain the existing production model.
 
 ---
+## 🔄 Retraining Workflow
 
-## Retraining Workflow
+The following diagram illustrates the automated retraining workflow, from production data collection through drift detection, model retraining, validation, and deployment.
 
-Insert the exported diagram here.
-
-```text
-docs/diagrams/retraining_pipeline.png
-```
-
-```markdown
 ![Retraining Pipeline](docs/diagrams/retraining_pipeline.png)
-```
-
 ---
 
 ## Model Comparison Strategy
@@ -904,11 +989,11 @@ The metadata file contains:
 
 # Continuous Integration / Continuous Deployment
 
-The project uses GitHub Actions to automate validation and deployment.
+The project uses **GitHub Actions** to automate validation, testing, containerization, and deployment preparation.
 
-The CI workflow executes after every push to the main branch.
+The **Continuous Integration (CI)** workflow executes on every push and pull request to the `main` branch.
 
-The CD workflow executes after a successful CI run and publishes updated production artifacts.
+The **Continuous Deployment (CD)** workflow executes automatically after a successful CI run and prepares the application for deployment.
 
 ---
 
@@ -916,15 +1001,15 @@ The CD workflow executes after a successful CI run and publishes updated product
 
 The CI workflow performs the following tasks:
 
-* Checkout repository
-* Configure Python
-* Install dependencies
-* Run unit tests
-* Verify project imports
-* Validate training pipeline
-* Ensure artifacts are correctly generated
+- Checkout repository
+- Configure Python 3.13
+- Install project dependencies
+- Run Flake8 code quality checks
+- Execute unit tests using Pytest
+- Build the Docker image
+- Push Docker images (`latest` and commit SHA) to GitHub Container Registry (GHCR)
 
-Workflow file
+**Workflow file**
 
 ```text
 .github/workflows/ci.yml
@@ -938,13 +1023,15 @@ The CD workflow executes only after a successful CI pipeline.
 
 Current deployment steps include:
 
-* Checkout repository
-* Build Docker image
-* Publish Docker image to GitHub Container Registry
-* Prepare deployment for Kubernetes
-* Ready for Azure Kubernetes Service integration
+- Checkout repository
+- Verify successful completion of the CI pipeline
+- Display deployment status
+- Confirm Docker image availability in GitHub Container Registry (GHCR)
+- Prepare the project for future Kubernetes / Azure Kubernetes Service (AKS) deployment
 
-Workflow file
+> **Note:** Automated Kubernetes deployment will be implemented in a future release. The current CD workflow serves as a deployment stage placeholder.
+
+**Workflow file**
 
 ```text
 .github/workflows/cd.yml
@@ -954,15 +1041,9 @@ Workflow file
 
 ## CI/CD Workflow
 
-Insert the exported diagram.
+The following diagram illustrates the implemented CI/CD workflow.
 
-```text
-docs/diagrams/ci_cd_pipeline.png
-```
-
-```markdown
 ![CI/CD Pipeline](docs/diagrams/ci_cd_pipeline.png)
-```
 
 ---
 
@@ -970,178 +1051,9 @@ docs/diagrams/ci_cd_pipeline.png
 
 The following diagram illustrates the complete lifecycle implemented in this repository.
 
-```text
-Dataset
-      │
-      ▼
-Feature Engineering
-      │
-      ▼
-Preprocessing
-      │
-      ▼
-Model Training
-      │
-      ▼
-Model Evaluation
-      │
-      ▼
-Best Model Selection
-      │
-      ▼
-Artifact Generation
-      │
-      ▼
-FastAPI Deployment
-      │
-      ▼
-Docker Container
-      │
-      ▼
-Kubernetes Deployment
-      │
-      ▼
-Prediction API
-      │
-      ▼
-Prometheus Metrics
-      │
-      ▼
-Grafana Dashboard
-      │
-      ▼
-Data Drift Detection
-      │
-      ▼
-Retraining Pipeline
-      │
-      ▼
-GitHub Actions
-      │
-      ▼
-Updated Production Model
-```
+![System Architecture](docs/diagrams/system_architecture1.png)
+![System Architecture](docs/diagrams/system_architecture2.png)
 
-Insert the workflow diagram.
-
-```text
-docs/diagrams/system_architecture.png
-```
-
----
-
-# Project Screenshots
-
-## Repository Structure
-
-> Placeholder
-
-```text
-docs/screenshots/repository_structure.png
-```
-
----
-
-## Swagger UI
-
-> Placeholder
-
-```text
-docs/screenshots/swagger_ui.png
-```
-
----
-
-## FastAPI Prediction
-
-> Placeholder
-
-```text
-docs/screenshots/prediction_api.png
-```
-
----
-
-## Docker Containers
-
-> Placeholder
-
-```text
-docs/screenshots/docker_containers.png
-```
-
----
-
-## Kubernetes Pods
-
-> Placeholder
-
-```text
-docs/screenshots/kubernetes_pods.png
-```
-
----
-
-## Kubernetes Services
-
-> Placeholder
-
-```text
-docs/screenshots/kubernetes_services.png
-```
-
----
-
-## Prometheus Dashboard
-
-> Placeholder
-
-```text
-docs/screenshots/prometheus_dashboard.png
-```
-
----
-
-## Grafana Dashboard
-
-> Placeholder
-
-```text
-docs/screenshots/grafana_dashboard.png
-```
-
----
-
-## MLflow Experiment Tracking
-
-> Placeholder
-
-```text
-docs/screenshots/mlflow_dashboard.png
-```
-
----
-
-## Drift Monitoring
-
-> Placeholder
-
-```text
-docs/screenshots/drift_monitoring.png
-```
-
----
-
-# Performance Summary
-
-| Model               |    Accuracy |   Precision |      Recall |    F1 Score |     ROC-AUC |
-| ------------------- | ----------: | ----------: | ----------: | ----------: | ----------: |
-| Logistic Regression | Placeholder | Placeholder | Placeholder | Placeholder | Placeholder |
-| Random Forest       | Placeholder | Placeholder | Placeholder | Placeholder | Placeholder |
-| Gradient Boosting   | Placeholder | Placeholder | Placeholder | Placeholder | Placeholder |
-| XGBoost             | Placeholder | Placeholder | Placeholder | Placeholder | Placeholder |
-
----
 
 # Testing
 
@@ -1273,53 +1185,6 @@ The current implementation provides a complete local MLOps workflow. Future enha
 | Architecture Decision Records | 6                    |
 
 ---
-
-# Documentation Index
-
-## Core Documentation
-
-| File                        | Description                           |
-| --------------------------- | ------------------------------------- |
-| `docs/architecture.md`      | Overall system architecture           |
-| `docs/project_structure.md` | Repository organization               |
-| `docs/infrastructure.md`    | Deployment infrastructure             |
-| `docs/api.md`               | REST API reference                    |
-| `docs/monitoring.md`        | Monitoring architecture               |
-| `docs/retraining.md`        | Automated retraining workflow         |
-| `docs/ci_cd.md`             | Continuous Integration and Deployment |
-
----
-
-## Architecture Decision Records
-
-| ADR     | Description                   |
-| ------- | ----------------------------- |
-| ADR-001 | Modular Project Architecture  |
-| ADR-002 | Model Selection Strategy      |
-| ADR-003 | Docker Containerization       |
-| ADR-004 | Kubernetes Deployment         |
-| ADR-005 | Monitoring Architecture       |
-| ADR-006 | Automated Retraining Pipeline |
-
----
-
-## Architecture Diagrams
-
-| Diagram                  |
-| ------------------------ |
-| System Architecture      |
-| Modular Architecture     |
-| Training Pipeline        |
-| Model Selection Workflow |
-| Docker Architecture      |
-| Kubernetes Architecture  |
-| Monitoring Architecture  |
-| Retraining Pipeline      |
-| CI/CD Pipeline           |
-| API Request Flow         |
-
----
-
 # Contributing
 
 Contributions are welcome.

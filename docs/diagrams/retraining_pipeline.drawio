@@ -1,63 +1,29 @@
              New Dataset
-
                   │
-
-                  ▼
-
         Feature Engineering
-
                   │
-
-                  ▼
-
           Preprocessing
-
                   │
-
                   ▼
-
           Train Models
-
                   │
-
                   ▼
-
         Select Best Model
-
                   │
-
                   ▼
-
- Compare Against Production
-
-                  │
-
+ Compare Against Production            │
       ┌───────────┴────────────┐
-
       │                        │
-
  Deploy                   Reject
-
       │                        │
-
       ▼                        ▼
-
 Save Artifacts          Keep Existing
-
       │
-
       ▼
-
 Git Commit
-
       │
-
       ▼
-
 Git Push
-
       │
-
       ▼
-
 GitHub Actions

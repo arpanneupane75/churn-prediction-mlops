@@ -1,9 +1,7 @@
                    Customer Churn Prediction MLOps
-
                            Project Root
 
                                  │
-
  ┌────────────┬─────────────┬────────────┬───────────────┐
  │            │             │            │               │
  ▼            ▼             ▼            ▼               ▼
@@ -19,17 +17,13 @@ Engineering             Detection      Pipeline
 
  │
  ▼
-
 Preprocessing
 
  │
-
  ▼
-
 Training
 
  │
-
  ▼
 
 Artifacts

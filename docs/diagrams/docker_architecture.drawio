@@ -1,23 +1,17 @@
                     Source Code
 
                          │
-
                          ▼
 
                   Docker Build
 
                          │
-
       ┌──────────────────┼─────────────────┐
 
       ▼                  ▼                 ▼
-
  FastAPI Image     Drift Image      Prometheus
-
       │                  │                 │
-
       └──────────────────┼─────────────────┘
-
                          ▼
 
                      Docker Engine
